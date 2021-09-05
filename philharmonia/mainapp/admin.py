@@ -1,3 +1,6 @@
 from django.contrib import admin
 
-# Register your models here.
+from mainapp.models import Concert, Genre
+
+admin.site.register(Concert)
+admin.site.register(Genre)
