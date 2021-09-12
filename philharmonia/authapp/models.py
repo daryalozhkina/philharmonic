@@ -1,10 +1,17 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
+from django.utils.translation import gettext_lazy as _
 
 
 class UserProfile(AbstractUser):
-    date_birth = models.DateField(verbose_name='Дата рождения', null=True)
-    email = models.EmailField(verbose_name='Адрес эллектронной почты', blank=True)
+    
+    GENDER_MALE= 'm'
+    GENDER_FEMALE = 'f'
+    GENDER_CHOICES = (
+        (GENDER_MALE, _("Мужчина")),
+        (GENDER_FEMALE, _("Женщина")),
+    )
 
-    def __str__(self):
-        return self.email
+    date_birth = models.DateField(_('date birth'), null=True)
+    gender = models.CharField(_('gender'), max_length=1,
+                              choices=GENDER_CHOICES, blank=True)

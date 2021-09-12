@@ -8,12 +8,14 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         UserProfile.objects.create_superuser('kpk', password='pass')
-        UserProfile.objects.create_user('Darya', password='pass')
-        UserProfile.objects.create_user('Victor', password='pass')
-        UserProfile.objects.create_user('Victoria', password='pass')
-        UserProfile.objects.create_user('Svetlana', password='pass')
-        UserProfile.objects.create_user('Evgeniy', password='pass')
-        UserProfile.objects.create_user('Alexander', password='pass')
-        UserProfile.objects.create_user('Vladimir', password='pass')
-        print('users created')
+        users = [
+            {'username': 'Darya', 'password': 'pass'},
+            {'username': 'Victor', 'password': 'pass'},
+            {'username': 'Victoria', 'password': 'pass'},
+            {'username': 'Svetlana', 'password': 'pass'},
+            {'username': 'Evgeniy', 'password': 'pass'},
+            {'username': 'Alexander', 'password': 'pass'},
+            {'username': 'Vladimir', 'password': 'pass'},
+        ]
+        print('Пользователи созданы')
 
