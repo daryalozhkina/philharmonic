@@ -1,7 +1,9 @@
 const Concert = ({concert}) => {
-    console.log('concert:', concert);
     return (
         <tr className="concert-row">
+            <td>
+                {concert.id}
+            </td>
             <td>
                 {concert.name}
             </td>
@@ -13,13 +15,14 @@ const Concert = ({concert}) => {
 }
 
 const ConcertList = ({concerts}) => {
-    console.log('concerts:', concerts);
+//    console.log('concerts:', concerts);
     return (
         <table className={"concert-list"}>
             <thead>
             <tr>
-                <th>Name</th>
-                <th>Created</th>
+                <th>id<th>
+                <th>name</th>
+                <th>created</th>
             </tr>
             </thead>
             <tbody>
