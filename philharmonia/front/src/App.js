@@ -145,7 +145,7 @@ class App extends React.Component {
                         <ConcertList concerts={this.state.concerts}/>
                     </Route>
                     <Route exact path="/items">
-                        <ItemList tasks={this.state.items}/>
+                        <ItemList items={this.state.items}/>
                     </Route>
                 </Router>
                 <Footer/>
