@@ -22,8 +22,8 @@ const usersMock = [
     },
     {
         "id": 3,
-        "username": "Victor",
-        "gender": "m",
+        "username": "Victoria",
+        "gender": "f",
         "date_birth": null
     },
     {
@@ -34,19 +34,19 @@ const usersMock = [
     },
     {
         "id": 5,
-        "username": "Victor",
+        "username": "Alexander",
         "gender": "m",
         "date_birth": null
     },
     {
         "id": 6,
-        "username": "Victor",
+        "username": "Daniel",
         "gender": "m",
         "date_birth": null
     },
     {
         "id": 7,
-        "username": "Victor",
+        "username": "Sergei",
         "gender": "m",
         "date_birth": null
     }
@@ -103,41 +103,18 @@ class App extends React.Component {
 
  componentDidMount() {
         this.setState({
-            concerts: concerts
+            users: users,
+            concerts: concerts,
+            items: items
         })
     }
     render() {
+        console.log('state', this.state);
         return (
-            <div className="main">
-                <Router>
-                    <Header/>
-                    <header className="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
-                        <Link to={"/"}
-                              className="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
-                            Philharmonic
-                        </Link>
-                        <ul className="nav nav-pills">
-                            <li className="nav-item">
-                                <Link to={"/users"} className="nav-link">
-                                    Users
-                                </Link>
-                            </li>
-                            <li className="nav-item">
-                                <Link to={"/concerts"} className="nav-link">
-                                    Концерты
-                                </Link>
-                            </li>
-                            <li className="nav-item">
-                                <Link to={"/items"} className="nav-link">
-                                    Номера
-                                </Link>
-                            </li>
-                        </ul>
-                    </header>
-
-                    <Route exact path="/">
-                        <Main/>
-                    </Route>
+        div className="main">
+            <Router>
+                <Header />
+                <Navbar />
                     <Route exact path="/users">
                         <UserList users={this.state.users}/>
                     </Route>
