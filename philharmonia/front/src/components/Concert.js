@@ -5,10 +5,17 @@ const Concert = ({concert}) => {
                 {concert.id}
             </td>
             <td>
-                {concert.name}
+                <Link to={`/concerts/detail/${concert.id}`} className="nav-link">
+                        {concert.name}
+                </Link>
             </td>
             <td>
                 {concert.created}
+            </td>
+            <td>
+                <Link to={`/concert/delete/${concert.id}`} className="nav-link">
+                        delete
+                </Link>
             </td>
         </tr>
     )
@@ -23,6 +30,10 @@ const ConcertList = ({concerts}) => {
                 <th>id<th>
                 <th>name</th>
                 <th>created</th>
+                <th>
+                <Link to={"/users"} className="nav-link">
+                                    Users
+                                </Link></th>
             </tr>
             </thead>
             <tbody>

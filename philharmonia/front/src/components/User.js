@@ -31,7 +31,7 @@ const UserList = (users) => {
             </tr>
             </thead>
             <tbody>
-            {users.users.map(User)}
+            {users.users.map(User)=> <User key={user.id} user={user}/>)}
             </tbody>
         </table>
     </div>
@@ -39,4 +39,4 @@ const UserList = (users) => {
 }
 
 
-export default UserList;
+export default User;

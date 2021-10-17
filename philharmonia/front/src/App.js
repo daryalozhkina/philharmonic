@@ -5,7 +5,10 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import UserList from "./components/User";
 import ConcertList from "./components/Concert";
+import ConcertDetail from "./components/ConcertDetail";
 import ItemList from "./components/Item";
+import axios from "axios";
+
 
 const usersMock = [
     {
@@ -102,10 +105,17 @@ class App extends React.Component {
 
 
  componentDidMount() {
+        axios
+            .get("http://localhost:8000/api/users/")
+            .then((result) => {
+                console.log('result', result)
+            })
+            .catch((error) => console.log(error));
+
         this.setState({
-            users: users,
-            concerts: concerts,
-            items: items
+            users: usersMock,
+            concerts: concertsMock,
+            items: ConcertItemsMock
         })
     }
     render() {
@@ -120,6 +130,9 @@ class App extends React.Component {
                     </Route>
                     <Route exact path="/concerts">
                         <ConcertList concerts={this.state.concerts}/>
+                    </Route>
+                    <Route exact path="/concerts/detail/:id">
+                        <ConcertDetail concerts={this.state.concerts}/>
                     </Route>
                     <Route exact path="/items">
                         <ItemList items={this.state.items}/>
