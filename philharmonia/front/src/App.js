@@ -9,6 +9,9 @@ import ConcertDetail from "./components/ConcertDetail";
 import ItemList from "./components/Item";
 import axios from "axios";
 
+const API_URL = "http://127.0.0.1:8000";
+const getResourceURL = (suffix) => `${API_URL}/api/${suffix}/`;
+
 
 const usersMock = [
     {
@@ -104,13 +107,34 @@ class App extends React.Component {
     }
 
 
- componentDidMount() {
+     componentDidMount() {
         axios
-            .get("http://localhost:8000/api/users/")
+            .get(getResourceURL("users"))
             .then((result) => {
-                console.log('result', result)
+                this.setState({
+                    users: result.data
+                })
             })
             .catch((error) => console.log(error));
+        axios
+            .get(getResourceURL("concerts"))
+            .then((result) => {
+                this.setState({
+                    concerts: result.data
+                })
+            })
+            .catch((error) => console.log(error));
+        axios
+            .get(getResourceURL("concert-items"))
+            .then((result) => {
+                this.setState({
+                    items: result.data
+                })
+            })
+            .catch((error) => console.log(error));
+
+    }
+
 
         this.setState({
             users: usersMock,
