@@ -3,6 +3,7 @@ from mainapp.serializers import ConcertSerializer, ConcertItemSerializer
 from rest_framework.viewsets import ModelViewSet
 
 from mainapp.models import Concert, ConcertItem
+from mainapp.serializers import ConcertSerializer, ConcertItemSerializer
 
 
 class ConcertList(ListView):
@@ -14,7 +15,7 @@ class ConcertItemList(ListView):
 
 
 class ConcertViewSet(ModelViewSet):
-    queryset = Concert.objects.all()
+    queryset = Concert.objects.filter(is_active=True)
     serializer_class = ConcertSerializer
 
 

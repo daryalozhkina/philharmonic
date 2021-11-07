@@ -1,3 +1,6 @@
+import {NavLink as Link} from "react-router-dom";
+import React from "react";
+
 const Concert = ({concert}) => {
     return (
         <tr className="concert-row">
@@ -8,6 +11,9 @@ const Concert = ({concert}) => {
                 <Link to={`/concerts/detail/${concert.id}`} className="nav-link">
                         {concert.name}
                 </Link>
+            </td>
+            <td>
+                {concert.desc}
             </td>
             <td>
                 {concert.created}
@@ -22,25 +28,20 @@ const Concert = ({concert}) => {
 }
 
 const ConcertList = ({concerts}) => {
-//    console.log('concerts:', concerts);
     return (
-        <table className={"concert-list"}>
-            <thead>
-            <tr>
-                <th>id<th>
-                <th>name</th>
-                <th>created</th>
-                <th>
-                <Link to={"/users"} className="nav-link">
-                                    Users
-                                </Link></th>
-            </tr>
-            </thead>
-            <tbody>
-            {concerts.map((concert) => <Concert key={concert.name} concert={concert}/>)}
-            </tbody>
-        </table>
+            <table className={"concert-list__table"}>
+                <thead>
+                <tr>
+                    <th>id<th>
+                    <th>name</th>
+                    <th>desc</th>
+                    <th>created</th>
+                </tr>
+                </thead>
+                <tbody>
+                {concerts.map((concert) => <Concert key={concert.id} concert={concert}/>)}
+                </tbody>
+            </table>
     )
 }
-
 export default ConcertList;

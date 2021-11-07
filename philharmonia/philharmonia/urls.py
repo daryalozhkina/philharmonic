@@ -23,7 +23,7 @@ import mainapp.views as mainapp
 router = DefaultRouter()
 router.register('users', authapp.UserViewsSet)
 router.register('concerts', mainapp.ConcertViewSet)
-router.register('concert-item', mainapp.ConcertItemViewSet)
+router.register('concert-items', mainapp.ConcertItemViewSet)
 
 urlpatterns = [
     path('', mainapp.ConcertList.as_view()),

@@ -25,4 +25,5 @@ function Navbar() {
                             </li>
                         </ul>
                     </header>
+    )
 }
