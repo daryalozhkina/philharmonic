@@ -15,6 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from rest_framework.authtoken.views import obtain_auth_token
 from rest_framework.routers import DefaultRouter
 
 import authapp.views as authapp
@@ -29,6 +30,8 @@ urlpatterns = [
     path('', mainapp.ConcertList.as_view()),
     path('concert/items/', mainapp.ConcertItemList.as_view()),
 
+    path('auth/login/', authapp.MyLogin.as_view(), name='login'),
+    path('api-token-auth/', obtain_auth_token),
     path('api/', include(router.urls)),
 
     path('admin/', admin.site.urls),

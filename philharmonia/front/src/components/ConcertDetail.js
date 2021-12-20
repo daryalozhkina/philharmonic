@@ -1,7 +1,7 @@
 import React from "react";
 import {useParams} from "react-router";
 
-const ConcertDetail = ({concerts}) => {
+const ConcertDetail = ({concerts, users}) => {
     let {id} = useParams();
     let concert = concerts.filter((item) =>item.id === +id)[0];
 
@@ -10,9 +10,9 @@ const ConcertDetail = ({concerts}) => {
             <h2>Concert: {concert.name}</h2>
             <h3>Desc: {concert.desc}</h3>
             <p>Created: {concert.created}</p>
-   ></div>
+   </div>
     )
 
 }
 
-export default ConcertDetail
+export default ConcertDetail;

@@ -1,10 +1,17 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    < metacharset="UTF-8">
+    <meta charset ="UTF-8">
     <title>>Concerts</title>
 </head>
 <body>
+<div class="user">
+    {% if user.is_authenticated %}
+        {{ user.username }}
+    {% else %}
+        <a href="{% url 'login' %}">Login</a>
+    {% endif %}
+</div>
 {% for concert in object_list %}
  {{ concert }}
 {% endfor %}

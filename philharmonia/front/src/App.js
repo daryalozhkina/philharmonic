@@ -8,6 +8,7 @@ import ConcertList from "./components/Concert";
 import ConcertDetail from "./components/ConcertDetail";
 import ItemList from "./components/Item";
 import axios from "axios";
+import LoginForm from "./components/LoginForm";
 
 const API_URL = "http://127.0.0.1:8000";
 const getResourceURL = (suffix) => `${API_URL}/api/${suffix}/`;
@@ -22,53 +23,59 @@ class App extends React.Component {
             'items': [],
         })
 
-        componentDidMount() {
-        axios
-            .get(getResourceURL("users"))
-            .then((result) => {
-                // console.log('users result:', result)
-                this.setState({
-                    users: result.data
+       componentDidMount()
+        {
+            axios
+                .get(getResourceURL("users"))
+                .then((result) => {
+                    // console.log('users result:', result)
+                    this.setState({
+                        users: result.data
+                    })
                 })
-            })
-            .catch((error) => console.log(error));
-        axios
-            .get(getResourceURL("concerts"))
-            .then((result) => {
-                this.setState({
-                    concerts: result.data
+                .catch((error) => console.log(error));
+            axios
+                .get(getResourceURL("concerts"))
+                .then((result) => {
+                    this.setState({
+                        concerts: result.data
+                    })
                 })
-            })
-            .catch((error) => console.log(error));
-        axios
-            .get(getResourceURL("concert-items"))
-            .then((result) => {
-                this.setState({
-                    items: result.data
+                .catch((error) => console.log(error));
+            axios
+                .get(getResourceURL("concert-items"))
+                .then((result) => {
+                    this.setState({
+                        items: result.data
+                    })
                 })
-            })
-            .catch((error) => console.log(error));
+                .catch((error) => console.log(error));
 
     }
-    }
     render() {
-        console.log('state', this.state);
+        // console.log('state', this.state);
         return (
         <div className="main">
-            <Router>
-                <Header />
-                <Navbar />
+                <Router>
+                    <Header/>
+                    <Route exact path="/">
+                        <Main/>
+                    </Route>
                     <Route exact path="/users">
                         <UserList users={this.state.users}/>
                     </Route>
-                    <Route exact path="/concerts">
+                    <Route exact path="/projects">
                         <ConcertList concerts={this.state.concerts}/>
                     </Route>
                     <Route exact path="/concerts/detail/:id">
-                        <ConcertDetail concerts={this.state.concerts}/>
+                        <ConcertDetail concerts={this.state.concerts}
+                                       users={this.state.users}/>
                     </Route>
                     <Route exact path="/items">
                         <ItemList items={this.state.items}/>
+                    </Route>
+                    <Route exact path="/login">
+                        <LoginForm />
                     </Route>
                 </Router>
                 <Footer/>
