@@ -1,5 +1,5 @@
 from django.views.generic import ListView
-from mainapp.serializers import ConcertSerializer, ConcertItemSerializer
+from rest_framework.permissions import AllowAny
 from rest_framework.viewsets import ModelViewSet
 
 from mainapp.models import Concert, ConcertItem
@@ -15,6 +15,7 @@ class ConcertItemList(ListView):
 
 
 class ConcertViewSet(ModelViewSet):
+    permission_classes = [AllowAny]
     queryset = Concert.objects.filter(is_active=True)
     serializer_class = ConcertSerializer
 

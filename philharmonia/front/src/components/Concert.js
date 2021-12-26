@@ -1,8 +1,8 @@
-// import {NavLink as Link} from "react-router-dom";
-// import React from "react";
+import {NavLink as Link} from "react-router-dom";
+import React from "react";
 
 const Concert = ({concert}) => {
-    return (
+    return(
         <tr className="concert-row">
             <td>
                 {concert.id}
@@ -16,18 +16,7 @@ const Concert = ({concert}) => {
                 {concert.desc}
             </td>
             <td>
-                {concert.created}
-            </td>
-            <td>
-                <Link to={`/concert/delete/${concert.id}`} className="nav-link">
-                        delete
-                </Link>
-            </td>
-            <td>
-                {project.created}
-            </td>
-            <td>
-                <Link to={`/projects/delete/${project.id}`} className="nav-link">
+                <Link to={`/concerts/delete/${concert.id}`} className="nav-link">
                         delete
                 </Link>
             </td>
@@ -36,16 +25,15 @@ const Concert = ({concert}) => {
 }
 
 const ConcertList = ({concerts}) => {
-    return (
-        <div className={"concert-list"}>
+    return(
+    <div className={"concert-list"}>
             <h1>Concerts</h1>
             <table className={"concert-list__table"}>
                 <thead>
                 <tr>
-                    <th>id<th>
+                    <th>id</th>
                     <th>name</th>
                     <th>desc</th>
-                    <th>created</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -56,4 +44,4 @@ const ConcertList = ({concerts}) => {
         )
 }
 
-export default ConcertList;
+export default ConcertList

@@ -10,6 +10,7 @@ class UserViewSet(ModelViewSet):
     queryset = UserProfile.objects.all()
     serializer_class = UserProfileSerializer
 
+
 class MyLogin(LoginView):
-    template_name = 'authapp/login.html'
+    templates_name = 'authapp/login.html'
     form_class = MyAuthForm

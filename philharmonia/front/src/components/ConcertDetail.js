@@ -9,7 +9,6 @@ const ConcertDetail = ({concerts, users}) => {
     <div className={"concert-detail"}>
             <h2>Concert: {concert.name}</h2>
             <h3>Desc: {concert.desc}</h3>
-            <p>Created: {concert.created}</p>
    </div>
     )
 
