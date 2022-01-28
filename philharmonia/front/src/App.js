@@ -9,6 +9,7 @@ import ConcertDetail from "./components/ConcertDetail";
 import ItemList from "./components/Item";
 import axios from "axios";
 import LoginForm from "./components/LoginForm";
+import RegisterForm from "./components/RegisterForm";
 
 const API_URL = "http://127.0.0.1:8000";
 const getResourceURL = (suffix) => `${API_URL}/api/${suffix}/`;
@@ -73,6 +74,9 @@ class App extends React.Component {
             .catch((error) => console.log(error));
     }
 
+     register(username, password1, password2, email) {
+         console.log('do register', username, password1, password2, email);
+     }
     logout() {
         localStorage.setItem('refreshToken', null);
         localStorage.setItem('accessToken', null);
@@ -132,8 +136,14 @@ class App extends React.Component {
                             <ItemList items={this.state.items}/>
                         </Route>
                         <Route exact path="/login">
-                            <LoginForm/>
+                            <LoginForm
+                            login={(username, password) => this.login(username, password)}/>
                         </Route>
+                        <Route exact path="/register">
+                        <RegisterForm
+                            register={(username, password1, password2, email) =>
+                                this.register(username, password1, password2, email)}/>
+                    </Route>
                         </Router>
                     <Footer/>
                 </div>
