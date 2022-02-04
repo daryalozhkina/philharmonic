@@ -12,5 +12,5 @@ class UserViewSet(ModelViewSet):
 
 
 class MyLogin(LoginView):
-    templates_name = 'authapp/login.html'
+    template_name = 'authapp/login.html'
     form_class = MyAuthForm

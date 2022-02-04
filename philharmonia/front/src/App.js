@@ -1,4 +1,4 @@
-import 'bootstrap/dist/css/bootstrap.min.css'
+import 'bootstrap/dist/css/bootstrap.min.css';
 import React from 'react';
 import {BrowserRouter as Router, Route} from 'react-router-dom';
 import Header from "./components/Header";
@@ -19,9 +19,9 @@ class App extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            'users': [],
-            'concerts': [],
-            'items': [],
+            users: [],
+            concerts: [],
+            items: [],
             accessToken: this.getAccessToken(),
         };
     }
@@ -74,9 +74,10 @@ class App extends React.Component {
             .catch((error) => console.log(error));
     }
 
-     register(username, password1, password2, email) {
-         console.log('do register', username, password1, password2, email);
-     }
+    register(username, password1, password2, email) {
+        console.log('do register', username, password1, password2, email);
+    }
+
     logout() {
         localStorage.setItem('refreshToken', null);
         localStorage.setItem('accessToken', null);
@@ -115,39 +116,41 @@ class App extends React.Component {
 
         return headers;
     }
-    render(){
-            return (
-                <div className="main">
-                    <Router>
-                        <Header isAuthenticated={this.isAuthenticated()}
+
+    render() {
+        return (
+            <div className="main">
+                <Router>
+                    <Header isAuthenticated={this.isAuthenticated()}
                             logout={() => this.logout()}/>
-                        <Header/>
-                        <Route exact path="/users">
-                            <UserList users={this.state.users}/>
-                        </Route>
-                        <Route exact path="/concerts">
-                            <ConcertList concerts={this.state.concerts}/>
-                        </Route>
-                        <Route exact path="/concerts/detail/:id">
-                            <ConcertDetail concerts={this.state.concerts}
-                                           users={this.state.users}/>
-                        </Route>
-                        <Route exact path="/items">
-                            <ItemList items={this.state.items}/>
-                        </Route>
-                        <Route exact path="/login">
-                            <LoginForm
+                    <Header/>
+                    <Route exact path="/users">
+                        <UserList users={this.state.users}/>
+                    </Route>
+                    <Route exact path="/concerts">
+                        <ConcertList concerts={this.state.concerts}/>
+                    </Route>
+                    <Route exact path="/concerts/detail/:id">
+                        <ConcertDetail concerts={this.state.concerts}
+                                       users={this.state.users}/>
+                    </Route>
+                    <Route exact path="/items">
+                        <ItemList items={this.state.items}/>
+                    </Route>
+                    <Route exact path="/login">
+                        <LoginForm
                             login={(username, password) => this.login(username, password)}/>
-                        </Route>
-                        <Route exact path="/register">
+                    </Route>
+                    <Route exact path="/register">
                         <RegisterForm
                             register={(username, password1, password2, email) =>
                                 this.register(username, password1, password2, email)}/>
                     </Route>
-                        </Router>
-                    <Footer/>
-                </div>
-            )
-        }
+                </Router>
+                <Footer/>
+            </div>
+        )
+    }
 }
+
 export default App;

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
     <meta charset ="UTF-8">
     <title>>Concerts</title>
@@ -9,7 +9,7 @@
     {% if user.is_authenticated %}
         {{ user.username }}
     {% else %}
-        <a href="{% url 'login' %}">Login</a>
+        <a href="{% url 'login' %}">Войти</a>
     {% endif %}
 </div>
 {% for concert in object_list %}

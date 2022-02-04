@@ -1,11 +1,3 @@
-// function Footer() {
-//     return (
-//         <footer>
-//             &copy; Kurgan, 2021
-//         </footer>
-//     )
-// }
-
 const Footer = () => {
     return (
         <footer>
@@ -13,4 +5,5 @@ const Footer = () => {
         </footer>
     )
 }
+
 export default Footer;
