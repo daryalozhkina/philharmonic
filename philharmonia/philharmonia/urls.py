@@ -28,7 +28,7 @@ router.register('concerts', mainapp.ConcertViewSet)
 router.register('concert-items', mainapp.ConcertItemViewSet)
 
 urlpatterns = [
-    path('', mainapp.ConcertList.as_view()),
+    path('concerts/', mainapp.ConcertList.as_view()),
     path('concert/items/', mainapp.ConcertItemList.as_view()),
 
     path('auth/login/', authapp.MyLogin.as_view(), name='login'),

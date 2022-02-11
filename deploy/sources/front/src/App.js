@@ -123,7 +123,6 @@ class App extends React.Component {
                 <Router>
                     <Header isAuthenticated={this.isAuthenticated()}
                             logout={() => this.logout()}/>
-                    <Header/>
                     <Route exact path="/users">
                         <UserList users={this.state.users}/>
                     </Route>

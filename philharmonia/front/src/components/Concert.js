@@ -2,14 +2,14 @@ import {NavLink as Link} from "react-router-dom";
 import React from "react";
 
 const Concert = ({concert}) => {
-    return(
+    return (
         <tr className="concert-row">
             <td>
                 {concert.id}
             </td>
             <td>
                 <Link to={`/concerts/detail/${concert.id}`} className="nav-link">
-                        {concert.name}
+                    {concert.name}
                 </Link>
             </td>
             <td>
@@ -17,7 +17,7 @@ const Concert = ({concert}) => {
             </td>
             <td>
                 <Link to={`/concerts/delete/${concert.id}`} className="nav-link">
-                        delete
+                    delete
                 </Link>
             </td>
         </tr>
@@ -25,8 +25,8 @@ const Concert = ({concert}) => {
 }
 
 const ConcertList = ({concerts}) => {
-    return(
-    <div className={"concert-list"}>
+    return (
+        <div className={"concert-list"}>
             <h1>Concerts</h1>
             <table className={"concert-list__table"}>
                 <thead>
@@ -41,7 +41,7 @@ const ConcertList = ({concerts}) => {
                 </tbody>
             </table>
         </div>
-        )
+    )
 }
 
 export default ConcertList

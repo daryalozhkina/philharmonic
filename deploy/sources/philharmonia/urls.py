@@ -15,6 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.views.generic import TemplateView
 from rest_framework.authtoken.views import obtain_auth_token
 from rest_framework.routers import DefaultRouter
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
@@ -28,10 +29,11 @@ router.register('concerts', mainapp.ConcertViewSet)
 router.register('concert-items', mainapp.ConcertItemViewSet)
 
 urlpatterns = [
-    path('', mainapp.ConcertList.as_view()),
-    path('concert/items/', mainapp.ConcertItemList.as_view()),
+path('', TemplateView.as_view(template_name='index.html')),
+    # path('', mainapp.ConcertList.as_view()),
 
-    path('auth/login/', authapp.MyLogin.as_view(), name='login'),
+    # path('concert/items/', mainapp.ConcertItemList.as_view()),
+    # path('auth/login/', authapp.MyLogin.as_view(), name='login'),
     path('api-token-auth/', obtain_auth_token),
 
     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),

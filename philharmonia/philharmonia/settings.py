@@ -76,7 +76,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'sources.wsgi.application'
+WSGI_APPLICATION = 'philharmonia.wsgi.application'
 
 
 # Database
