@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset ="UTF-8">
+    <title>>Концерты</title>
+</head>
+<body>
+<div class="user">
+    {% if user.is_authenticated %}
+        {{ user.username }}
+    {% else %}
+        <a href="{% url 'login' %}">Войти</a>
+    {% endif %}
+</div>
+{% for concert in object_list %}
+ {{ concert }}
+{% endfor %}
+</body>
+</html>
