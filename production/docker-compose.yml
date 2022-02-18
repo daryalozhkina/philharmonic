@@ -1,0 +1,28 @@
+version: '3.2'
+
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: DockerFile
+    expose:
+      - 8080
+    command: bash -c " python manage.py makemigrations && python manage.py migrate && gunicorn news_site.wsgi -b 0.0.0.0:8080 "
+
+  nginx:
+    build:
+      context: ./nginx
+      dockerfile: DockerFile
+    ports:
+      - 8000:80
+    depends_on:
+      - backend
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: DockerFile
+    ports:
+      - 85:80
+    depends_on:
+      - nginx
