@@ -7,14 +7,14 @@ services:
       dockerfile: DockerFile
     expose:
       - 8080
-    command: bash -c " python manage.py makemigrations && python manage.py migrate && gunicorn news_site.wsgi -b 0.0.0.0:8080 "
+    command: bash -c " python manage.py makemigrations &&    python manage.py migrate &&    gunicorn philharmonia.wsgi -b 0.0.0.0:8080 "
 
   nginx:
     build:
       context: ./nginx
       dockerfile: DockerFile
     ports:
-      - 8001:80
+      - 8000:80
     depends_on:
       - backend
 
